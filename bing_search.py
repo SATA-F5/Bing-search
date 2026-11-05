@@ -381,7 +381,11 @@ class BingSearchClient:
                     return body
             except BingSearchError:
                 raise
-            except (TimeoutError, aiohttp.ClientError) as exc:
+            except (  # noqa: UP041 - keep Python 3.10 compatibility
+                TimeoutError,
+                asyncio.TimeoutError,
+                aiohttp.ClientError,
+            ) as exc:
                 last_error = BingSearchError(f"Bing request failed: {exc}")
                 if attempt + 1 < self.max_retries:
                     await asyncio.sleep(0.35 * (attempt + 1))
