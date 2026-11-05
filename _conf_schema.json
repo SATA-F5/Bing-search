@@ -1,0 +1,86 @@
+{
+  "register_llm_tool": {
+    "description": "注册 LLM 搜索工具",
+    "type": "bool",
+    "default": true,
+    "hint": "开启后，聊天模型可以像调用 AstrBot 原生网页搜索一样调用 web_search_bing。"
+  },
+  "enable_command": {
+    "description": "启用 /bing 指令",
+    "type": "bool",
+    "default": true,
+    "hint": "启用后可以使用 /bing、/必应 或 /bsearch 手动搜索，便于测试和直接查资料。"
+  },
+  "default_count": {
+    "description": "LLM 工具默认结果数",
+    "type": "int",
+    "default": 8,
+    "hint": "模型调用 web_search_bing 且未指定 count 时返回的结果数量，范围 1-10。"
+  },
+  "command_count": {
+    "description": "指令默认结果数",
+    "type": "int",
+    "default": 5,
+    "hint": "/bing 指令默认显示的结果数量，范围 1-10。"
+  },
+  "market": {
+    "description": "默认搜索市场",
+    "type": "string",
+    "default": "zh-CN",
+    "hint": "例如 zh-CN、en-US、ja-JP。插件会同时设置 Bing 的 mkt、setlang 和 cc 参数。"
+  },
+  "safe_search": {
+    "description": "安全搜索",
+    "type": "string",
+    "default": "moderate",
+    "options": ["moderate", "strict", "off"],
+    "labels": ["适中（推荐）", "严格", "关闭"],
+    "hint": "对应 Bing 的 adlt 参数。"
+  },
+  "fetch_mode": {
+    "description": "抓取方式",
+    "type": "string",
+    "default": "auto",
+    "options": ["auto", "rss", "html"],
+    "labels": ["自动（RSS → HTML）", "仅 RSS", "仅 HTML"],
+    "subtitles": ["优先使用轻量的 RSS，失败或为空时回退 HTML", "只请求 Bing RSS 结果", "只解析 Bing 网页搜索结果"],
+    "hint": "一般保持 auto 即可。部分网络环境下某一种方式可能不可用。"
+  },
+  "timeout": {
+    "description": "单次请求超时（秒）",
+    "type": "float",
+    "default": 15.0,
+    "hint": "网络较慢时可适当调大，范围 3-60 秒。"
+  },
+  "max_retries": {
+    "description": "请求重试次数",
+    "type": "int",
+    "default": 2,
+    "hint": "遇到超时、429 或 5xx 时的尝试次数，范围 1-4。"
+  },
+  "search_endpoint": {
+    "description": "搜索入口地址",
+    "type": "string",
+    "default": "https://www.bing.com/search",
+    "hint": "一般无需修改。Bing 会根据网络自动跳转到 cn.bing.com 等区域站点。"
+  },
+  "proxy": {
+    "description": "HTTP(S) 代理",
+    "type": "string",
+    "default": "",
+    "hint": "留空时遵循系统 HTTP_PROXY / HTTPS_PROXY 环境变量。填写示例：http://127.0.0.1:7890。"
+  },
+  "cookie": {
+    "description": "Bing Cookie（可选）",
+    "type": "string",
+    "default": "",
+    "secret": true,
+    "hint": "仅在使用自己的浏览器 Cookie 时填写，用于改善频繁请求后的结果稳定性。请勿分享给他人。"
+  },
+  "user_agent": {
+    "description": "自定义 User-Agent",
+    "type": "string",
+    "default": "",
+    "hint": "留空时插件会在常见桌面浏览器 UA 之间自动选择。"
+  }
+}

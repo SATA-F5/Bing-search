@@ -1,0 +1,14 @@
+name: astrbot_plugin_bing_search
+display_name: Bing 搜索
+short_desc: 无需 API Key 的必应网页搜索工具，模拟 AstrBot 原生网页搜索调用。
+desc: 使用必应（Bing）搜索引擎为 AstrBot 提供网页搜索能力。插件注册 web_search_bing 工具，返回与 AstrBot 原生网页搜索一致的 JSON 结果与引用索引；同时提供 /bing 指令便于手动测试。优先使用轻量 RSS 结果，失败时自动回退 HTML 解析，全程异步请求，无需申请搜索 API Key。
+version: 1.0.0
+author: SATA-F5
+repo: https://github.com/SATA-F5/Bing-search
+astrbot_version: ">=4.16,<5"
+tags:
+  - Bing
+  - 搜索
+  - 网页搜索
+  - 工具
+category: tool
